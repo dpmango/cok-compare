@@ -11,18 +11,18 @@
     <meta name="format-detection" content="telephone=no">
     <!-- appstore links-->
     <!-- seo meta-->
-    <meta name="description" content="Meta description">
-    <meta name="keywords" content="Key, words">
-    <meta name="author" content="Site name">
+    <meta name="description" content="Сетевой университет здание">
+    <meta name="keywords" content="СУЗ, университет">
+    <meta name="author" content="СУЗ">
     <!-- og meta-->
-    <meta property="og:title" content="Site name">
-    <meta property="og:url" content="https://projectname.surge.sh">
-    <meta property="og:image" content="https://projectname.surge.sh/img/og/1_1080х607.jpg">
-    <meta property="og:description" content="Site name">
-    <meta name="twitter:title" content="Site name">
-    <meta name="twitter:description" content="Site name">
-    <meta name="twitter:image:src" content="https://projectname.surge.sh/img/og/1_1200х628.jpg">
-    <meta name="twitter:url" content="https://projectname.surge.sh">
+    <meta property="og:title" content="Главная :: Сетевой университет здание">
+    <meta property="og:url" content="https://cok-layout.surge.sh/">
+    <meta property="og:image" content="https://cok-layout.surge.sh/img/hero.jpg">
+    <meta property="og:description" content="Сетевой университет здание">
+    <meta name="twitter:title" content="Главная :: Сетевой университет здание">
+    <meta name="twitter:description" content="Сетевой университет здание">
+    <meta name="twitter:image:src" content="https://cok-layout.surge.sh/img/hero.jpg">
+    <meta name="twitter:url" content="https://cok-layout.surge.sh/">
     <!-- remove for production-->
     <meta name="robots" content="noindex">
     <link rel="stylesheet" media="all" href="css/app.css">
@@ -683,20 +683,22 @@
           </div>
           <!-- filters container-->
           <div class="container container--wide">
-            <div class="projects__filters p-filters">
+            <form class="projects__filters p-filters" action="#">
               <div class="p-filters__title">Поиск Программы</div>
               <div class="row">
                 <div class="col col-12">
-                  <div class="p-filters__group ui-input-iconed">
-                    <input class="ui-input" type="text" id="filter" placeholder="Введите название">
-                    <svg class="ico ico-mono-arrow-long">
-                      <use xlink:href="#ico-mono-arrow-long"></use>
-                    </svg>
+                  <div class="p-filters__group">
+                    <input class="ui-input" type="text" id="filter" name="title" placeholder="Введите название">
+                    <button type="submit">
+                      <svg class="ico ico-mono-arrow-long">
+                        <use xlink:href="#ico-mono-arrow-long"></use>
+                      </svg>
+                    </button>
                   </div>
                 </div>
                 <div class="col col-4 col-md-12">
                   <div class="p-filters__group">
-                    <select class="js-choices ui-input">
+                    <select class="js-choices ui-input" name="category">
                       <option value="" placeholder>Категория</option>
                       <option value="1">Категория 1</option>
                       <option value="2">Категория 2</option>
@@ -706,7 +708,7 @@
                 </div>
                 <div class="col col-4 col-md-12">
                   <div class="p-filters__group">
-                    <select class="js-choices ui-input">
+                    <select class="js-choices ui-input" name="direction">
                       <option value="" placeholder>Направление</option>
                       <option value="1">Направление 1</option>
                       <option value="2">Направление 2</option>
@@ -716,7 +718,7 @@
                 </div>
                 <div class="col col-4 col-md-12">
                   <div class="p-filters__group">
-                    <select class="js-choices ui-input">
+                    <select class="js-choices ui-input" name="type">
                       <option placeholder value="">Форма обучения</option>
                       <option value="1">Форма обучения 1</option>
                       <option value="2">Форма обучения 2</option>
@@ -725,7 +727,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
           <!-- list container-->
           <div class="container">

@@ -48,7 +48,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     return i.d(t, "a", t), t;
   }, i.o = function (e, t) {
     return Object.prototype.hasOwnProperty.call(e, t);
-  }, i.p = "", i(i.s = 24);
+  }, i.p = "", i(i.s = 23);
 }([function (e, t, i) {
   var n;
   n = function n() {
@@ -568,8 +568,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   };
 }, function (e, t, i) {
   var n = i(1),
-      r = i(16),
-      s = i(18),
+      r = i(15),
+      s = i(17),
       o = Math.max,
       a = Math.min;
 
@@ -633,8 +633,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }, C;
   };
 }, function (e, t, i) {
-  var n = i(14),
-      r = i(15);
+  var n = i(13),
+      r = i(14);
   void 0 === r.$ && (r.$ = n), void 0 === r.jQuery && (r.jQuery = n), e.exports = n;
 }, function (e, t) {
   var i;
@@ -651,7 +651,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
   e.exports = i;
 }, function (e, t, i) {
-  var n = i(17),
+  var n = i(16),
       r = "object" == (typeof self === "undefined" ? "undefined" : _typeof(self)) && self && self.Object === Object && self,
       s = n || r || Function("return this")();
   e.exports = s;
@@ -1221,202 +1221,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }, i.src = t, "pending";
     }("image/webp", "data:image/webp;base64,UklGRkoAAABXRUJQVlA4WAoAAAAQAAAAAAAAAAAAQUxQSAwAAAABBxAR/Q9ERP8DAABWUDggGAAAADABAJ0BKgEAAQADADQlpAADcAD++/1QAA=="));
   }(window, document);
-}, function (e, t, i) {
-  var n, r, s;
-  /*!
-   * viewport-units-buggyfill v0.6.2
-   * @web: https://github.com/rodneyrehm/viewport-units-buggyfill/
-   * @author: Rodney Rehm - http://rodneyrehm.de/en/
-   */
-
-  !function (i, o) {
-    "use strict";
-
-    r = [], void 0 === (s = "function" == typeof (n = function n() {
-      var e,
-          t,
-          i,
-          n,
-          r,
-          s = !1,
-          o = window.navigator.userAgent,
-          a = /([+-]?[0-9.]+)(vh|vw|vmin|vmax)/g,
-          l = /(https?:)?\/\//,
-          c = [].forEach,
-          u = /MSIE [0-9]\./i.test(o),
-          d = /MSIE [0-8]\./i.test(o),
-          h = o.indexOf("Opera Mini") > -1,
-          f = /(iPhone|iPod|iPad).+AppleWebKit/i.test(o) && (r = o.match(/OS (\d)/)) && r.length > 1 && parseInt(r[1]) < 10,
-          p = o.indexOf(" Android ") > -1 && o.indexOf("Version/") > -1 && parseFloat((o.match("Android ([0-9.]+)") || [])[1]) <= 4.4;
-      u || (u = !!navigator.userAgent.match(/MSIE 10\.|Trident.*rv[ :]*1[01]\.| Edge\/1\d\./));
-
-      try {
-        new v("test");
-      } catch (e) {
-        var v = function v(e, t) {
-          var i;
-          return t = t || {
-            bubbles: !1,
-            cancelable: !1,
-            detail: void 0
-          }, (i = document.createEvent("CustomEvent")).initCustomEvent(e, t.bubbles, t.cancelable, t.detail), i;
-        };
-
-        v.prototype = window.Event.prototype, window.CustomEvent = v;
-      }
-
-      function m() {
-        s && (g(), setTimeout(function () {
-          n.textContent = b(), n.parentNode.appendChild(n), window.dispatchEvent(new v("viewport-units-buggyfill-style"));
-        }, 1));
-      }
-
-      function g() {
-        return i = [], c.call(document.styleSheets, function (e) {
-          var t = function (e) {
-            try {
-              if (!e.cssRules) return;
-            } catch (e) {
-              if ("SecurityError" !== e.name) throw e;
-              return;
-            }
-
-            for (var t = [], i = 0; i < e.cssRules.length; i++) {
-              var n = e.cssRules[i];
-              t.push(n);
-            }
-
-            return t;
-          }(e);
-
-          t && "patched-viewport" !== e.ownerNode.id && "ignore" !== e.ownerNode.getAttribute("data-viewport-units-buggyfill") && (e.media && e.media.mediaText && window.matchMedia && !window.matchMedia(e.media.mediaText).matches || c.call(t, y));
-        }), i;
-      }
-
-      function y(t) {
-        if (7 === t.type) {
-          var n;
-
-          try {
-            n = t.cssText;
-          } catch (e) {
-            return;
-          }
-
-          return a.lastIndex = 0, void (a.test(n) && !l.test(n) && (i.push([t, null, n]), e.hacks && e.hacks.findDeclarations(i, t, null, n)));
-        }
-
-        if (t.style) c.call(t.style, function (n) {
-          var r = t.style.getPropertyValue(n);
-          t.style.getPropertyPriority(n) && (r += " !important"), a.lastIndex = 0, a.test(r) && (i.push([t, n, r]), e.hacks && e.hacks.findDeclarations(i, t, n, r));
-        });else {
-          if (!t.cssRules) return;
-          c.call(t.cssRules, function (e) {
-            y(e);
-          });
-        }
-      }
-
-      function b() {
-        var e, n;
-        e = window.innerHeight, n = window.innerWidth, t = {
-          vh: e,
-          vw: n,
-          vmax: Math.max(n, e),
-          vmin: Math.min(n, e)
-        };
-        var r,
-            s,
-            o = [],
-            a = [];
-        return i.forEach(function (e) {
-          var t = w.apply(null, e),
-              i = t.selector.length ? t.selector.join(" {\n") + " {\n" : "",
-              n = new Array(t.selector.length + 1).join("\n}");
-          if (!i || i !== r) return a.length && (o.push(r + a.join("\n") + s), a.length = 0), void (i ? (r = i, s = n, a.push(t.content)) : (o.push(t.content), r = null, s = null));
-          i && !r && (r = i, s = n), a.push(t.content);
-        }), a.length && o.push(r + a.join("\n") + s), h && o.push("* { content: normal !important; }"), o.join("\n\n");
-      }
-
-      function w(t, i, n) {
-        var r,
-            s = [];
-        r = n.replace(a, x), e.hacks && (r = e.hacks.overwriteDeclaration(t, i, r)), i && (s.push(t.selectorText), r = i + ": " + r + ";");
-
-        for (var o = t.parentRule; o;) {
-          o.media ? s.unshift("@media " + o.media.mediaText) : o.conditionText && s.unshift("@supports " + o.conditionText), o = o.parentRule;
-        }
-
-        return {
-          selector: s,
-          content: r
-        };
-      }
-
-      function x(e, i, n) {
-        var r = t[n];
-        return parseFloat(i) / 100 * r + "px";
-      }
-
-      function S(e) {
-        return e.slice(0, e.indexOf("/", e.indexOf("://") + 3));
-      }
-
-      return {
-        version: "0.6.1",
-        findProperties: g,
-        getCss: b,
-        init: function init(t) {
-          if (!s) {
-            if (!0 === t && (t = {
-              force: !0
-            }), (e = t || {}).isMobileSafari = f, e.isBadStockAndroid = p, !e.ignoreVmax || e.force || d || (u = !1), d || !e.force && !f && !u && !p && !h && (!e.hacks || !e.hacks.required(e))) return window.console && d && console.info("viewport-units-buggyfill requires a proper CSSOM and basic viewport unit support, which are not available in IE8 and below"), {
-              init: function init() {}
-            };
-            var i, r, o;
-            window.dispatchEvent(new v("viewport-units-buggyfill-init")), e.hacks && e.hacks.initialize(e), s = !0, (n = document.createElement("style")).id = "patched-viewport", document[e.appendToBody ? "body" : "head"].appendChild(n), i = function i() {
-              var t,
-                  i,
-                  n,
-                  r = (t = m, i = e.refreshDebounceWait || 100, function () {
-                var e = this,
-                    r = arguments,
-                    s = function s() {
-                  t.apply(e, r);
-                };
-
-                clearTimeout(n), n = setTimeout(s, i);
-              });
-              window.addEventListener("orientationchange", r, !0), window.addEventListener("pageshow", r, !0), (e.force || u || function () {
-                try {
-                  return window.self !== window.top;
-                } catch (e) {
-                  return !0;
-                }
-              }()) && (window.addEventListener("resize", r, !0), e._listeningToResize = !0), e.hacks && e.hacks.initializeEvents(e, m, r), m();
-            }, r = 0, o = function o() {
-              --r || i();
-            }, c.call(document.styleSheets, function (e) {
-              e.href && S(e.href) !== S(location.href) && "ignore" !== e.ownerNode.getAttribute("data-viewport-units-buggyfill") && (r++, function (e, t) {
-                !function (e, t, i) {
-                  var n = new XMLHttpRequest();
-                  if ("withCredentials" in n) n.open("GET", e, !0);else {
-                    if ("undefined" == typeof XDomainRequest) throw new Error("cross-domain XHR not supported");
-                    (n = new XDomainRequest()).open("GET", e);
-                  }
-                  n.onload = t, n.onerror = i, n.send();
-                }(e.href, function () {
-                  var i = document.createElement("style");
-                  i.media = e.media, i.setAttribute("data-href", e.href), i.textContent = this.responseText, e.parentNode.replaceChild(i, e), t();
-                }, t);
-              }(e.ownerNode, o));
-            }), r || i();
-          }
-        },
-        refresh: m
-      };
-    }) ? n.apply(t, r) : n) || (e.exports = s);
-  }();
 }, function (e, t, i) {
   var n, r, s;
   /*!
@@ -9380,7 +9184,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
   }).call(this, i(4));
 }, function (e, t, i) {
   var n = i(1),
-      r = i(19),
+      r = i(18),
       s = /^\s+|\s+$/g,
       o = /^[-+]0x[0-9a-f]+$/i,
       a = /^0b[01]+$/i,
@@ -9402,16 +9206,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     return i || l.test(e) ? c(e.slice(2), i ? 2 : 8) : o.test(e) ? NaN : +e;
   };
 }, function (e, t, i) {
-  var n = i(20),
-      r = i(23);
+  var n = i(19),
+      r = i(22);
 
   e.exports = function (e) {
     return "symbol" == _typeof(e) || r(e) && "[object Symbol]" == n(e);
   };
 }, function (e, t, i) {
   var n = i(6),
-      r = i(21),
-      s = i(22),
+      r = i(20),
+      s = i(21),
       o = n ? n.toStringTag : void 0;
 
   e.exports = function (e) {
@@ -9454,58 +9258,56 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       r = i.n(n),
       s = i(8),
       o = i.n(s),
-      a = i(9),
-      l = i.n(a),
-      c = "bfred-it:object-fit-images",
-      u = /(object-fit|object-position)\s*:\s*([-.\w\s%]+)/g,
-      d = "undefined" == typeof Image ? {
+      a = "bfred-it:object-fit-images",
+      l = /(object-fit|object-position)\s*:\s*([-.\w\s%]+)/g,
+      c = "undefined" == typeof Image ? {
     style: {
       "object-position": 1
     }
   } : new Image(),
-      h = ("object-fit" in d.style),
-      f = ("object-position" in d.style),
-      p = ("background-size" in d.style),
-      v = "string" == typeof d.currentSrc,
-      m = d.getAttribute,
-      g = d.setAttribute,
-      y = !1;
+      u = ("object-fit" in c.style),
+      d = ("object-position" in c.style),
+      h = ("background-size" in c.style),
+      f = "string" == typeof c.currentSrc,
+      p = c.getAttribute,
+      v = c.setAttribute,
+      m = !1;
 
-  function b(e, t, i) {
+  function g(e, t, i) {
     var n = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='" + (t || 1) + "' height='" + (i || 0) + "'%3E%3C/svg%3E";
-    m.call(e, "src") !== n && g.call(e, "src", n);
+    p.call(e, "src") !== n && v.call(e, "src", n);
   }
 
-  function w(e, t) {
-    e.naturalWidth ? t(e) : setTimeout(w, 100, e, t);
+  function y(e, t) {
+    e.naturalWidth ? t(e) : setTimeout(y, 100, e, t);
   }
 
-  function x(e) {
+  function b(e) {
     var t = function (e) {
-      for (var t, i = getComputedStyle(e).fontFamily, n = {}; null !== (t = u.exec(i));) {
+      for (var t, i = getComputedStyle(e).fontFamily, n = {}; null !== (t = l.exec(i));) {
         n[t[1]] = t[2];
       }
 
       return n;
     }(e),
-        i = e[c];
+        i = e[a];
 
     if (t["object-fit"] = t["object-fit"] || "fill", !i.img) {
       if ("fill" === t["object-fit"]) return;
-      if (!i.skipTest && h && !t["object-position"]) return;
+      if (!i.skipTest && u && !t["object-position"]) return;
     }
 
     if (!i.img) {
-      i.img = new Image(e.width, e.height), i.img.srcset = m.call(e, "data-ofi-srcset") || e.srcset, i.img.src = m.call(e, "data-ofi-src") || e.src, g.call(e, "data-ofi-src", e.src), e.srcset && g.call(e, "data-ofi-srcset", e.srcset), b(e, e.naturalWidth || e.width, e.naturalHeight || e.height), e.srcset && (e.srcset = "");
+      i.img = new Image(e.width, e.height), i.img.srcset = p.call(e, "data-ofi-srcset") || e.srcset, i.img.src = p.call(e, "data-ofi-src") || e.src, v.call(e, "data-ofi-src", e.src), e.srcset && v.call(e, "data-ofi-srcset", e.srcset), g(e, e.naturalWidth || e.width, e.naturalHeight || e.height), e.srcset && (e.srcset = "");
 
       try {
         !function (e) {
           var t = {
             get: function get(t) {
-              return e[c].img[t || "src"];
+              return e[a].img[t || "src"];
             },
             set: function set(t, i) {
-              return e[c].img[i || "src"] = t, g.call(e, "data-ofi-" + i, t), x(e), t;
+              return e[a].img[i || "src"] = t, v.call(e, "data-ofi-" + i, t), b(e), t;
             }
           };
           Object.defineProperty(e, "src", t), Object.defineProperty(e, "currentSrc", {
@@ -9527,7 +9329,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
 
     !function (e) {
-      if (e.srcset && !v && window.picturefill) {
+      if (e.srcset && !f && window.picturefill) {
         var t = window.picturefill._;
         e[t.ns] && e[t.ns].evaled || t.fillImg(e, {
           reselect: !0
@@ -9535,71 +9337,71 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           reselect: !0
         })), e.currentSrc = e[t.ns].curSrc || e.src;
       }
-    }(i.img), e.style.backgroundImage = 'url("' + (i.img.currentSrc || i.img.src).replace(/"/g, '\\"') + '")', e.style.backgroundPosition = t["object-position"] || "center", e.style.backgroundRepeat = "no-repeat", e.style.backgroundOrigin = "content-box", /scale-down/.test(t["object-fit"]) ? w(i.img, function () {
+    }(i.img), e.style.backgroundImage = 'url("' + (i.img.currentSrc || i.img.src).replace(/"/g, '\\"') + '")', e.style.backgroundPosition = t["object-position"] || "center", e.style.backgroundRepeat = "no-repeat", e.style.backgroundOrigin = "content-box", /scale-down/.test(t["object-fit"]) ? y(i.img, function () {
       i.img.naturalWidth > e.width || i.img.naturalHeight > e.height ? e.style.backgroundSize = "contain" : e.style.backgroundSize = "auto";
-    }) : e.style.backgroundSize = t["object-fit"].replace("none", "auto").replace("fill", "100% 100%"), w(i.img, function (t) {
-      b(e, t.naturalWidth, t.naturalHeight);
+    }) : e.style.backgroundSize = t["object-fit"].replace("none", "auto").replace("fill", "100% 100%"), y(i.img, function (t) {
+      g(e, t.naturalWidth, t.naturalHeight);
     });
   }
 
-  function S(e, t) {
-    var i = !y && !e;
-    if (t = t || {}, e = e || "img", f && !t.skipTest || !p) return !1;
+  function w(e, t) {
+    var i = !m && !e;
+    if (t = t || {}, e = e || "img", d && !t.skipTest || !h) return !1;
     "img" === e ? e = document.getElementsByTagName("img") : "string" == typeof e ? e = document.querySelectorAll(e) : "length" in e || (e = [e]);
 
     for (var n = 0; n < e.length; n++) {
-      e[n][c] = e[n][c] || {
+      e[n][a] = e[n][a] || {
         skipTest: t.skipTest
-      }, x(e[n]);
+      }, b(e[n]);
     }
 
     i && (document.body.addEventListener("load", function (e) {
-      "IMG" === e.target.tagName && S(e.target, {
+      "IMG" === e.target.tagName && w(e.target, {
         skipTest: t.skipTest
       });
-    }, !0), y = !0, e = "img"), t.watchMQ && window.addEventListener("resize", S.bind(null, e, {
+    }, !0), m = !0, e = "img"), t.watchMQ && window.addEventListener("resize", w.bind(null, e, {
       skipTest: t.skipTest
     }));
   }
 
-  S.supportsObjectFit = h, S.supportsObjectPosition = f, function () {
+  w.supportsObjectFit = u, w.supportsObjectPosition = d, function () {
     function e(e, t) {
-      return e[c] && e[c].img && ("src" === t || "srcset" === t) ? e[c].img : e;
+      return e[a] && e[a].img && ("src" === t || "srcset" === t) ? e[a].img : e;
     }
 
-    f || (HTMLImageElement.prototype.getAttribute = function (t) {
-      return m.call(e(this, t), t);
+    d || (HTMLImageElement.prototype.getAttribute = function (t) {
+      return p.call(e(this, t), t);
     }, HTMLImageElement.prototype.setAttribute = function (t, i) {
-      return g.call(e(this, t), t, String(i));
+      return v.call(e(this, t), t, String(i));
     });
   }();
-  var C = S;
+  var x = w;
 
-  function E(e, t) {
+  function S(e, t) {
     for (var i = 0; i < t.length; i++) {
       var n = t[i];
       n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
     }
   }
 
-  function T(e) {
+  function C(e) {
     return function (e) {
-      if (Array.isArray(e)) return k(e);
+      if (Array.isArray(e)) return E(e);
     }(e) || function (e) {
       if ("undefined" != typeof Symbol && Symbol.iterator in Object(e)) return Array.from(e);
     }(e) || function (e, t) {
       if (!e) return;
-      if ("string" == typeof e) return k(e, t);
+      if ("string" == typeof e) return E(e, t);
       var i = Object.prototype.toString.call(e).slice(8, -1);
       "Object" === i && e.constructor && (i = e.constructor.name);
       if ("Map" === i || "Set" === i) return Array.from(i);
-      if ("Arguments" === i || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(i)) return k(e, t);
+      if ("Arguments" === i || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(i)) return E(e, t);
     }(e) || function () {
       throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
 
-  function k(e, t) {
+  function E(e, t) {
     (null == t || t > e.length) && (t = e.length);
 
     for (var i = 0, n = new Array(t); i < t; i++) {
@@ -9609,12 +9411,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     return n;
   }
 
-  var A,
+  var T,
+      k,
+      A,
       _,
       L,
-      M,
-      O,
-      I = (A = ["a[href]", "area[href]", 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "select:not([disabled]):not([aria-hidden])", "textarea:not([disabled]):not([aria-hidden])", "button:not([disabled]):not([aria-hidden])", "iframe", "object", "embed", "[contenteditable]", '[tabindex]:not([tabindex^="-"])'], _ = function () {
+      M = (T = ["a[href]", "area[href]", 'input:not([disabled]):not([type="hidden"]):not([aria-hidden])', "select:not([disabled]):not([aria-hidden])", "textarea:not([disabled]):not([aria-hidden])", "button:not([disabled]):not([aria-hidden])", "iframe", "object", "embed", "[contenteditable]", '[tabindex]:not([tabindex^="-"])'], k = function () {
     function e(t) {
       var i = t.targetModal,
           n = t.triggers,
@@ -9637,12 +9439,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           w = void 0 !== b && b,
           x = t.awaitOpenAnimation,
           S = void 0 !== x && x,
-          C = t.debugMode,
-          E = void 0 !== C && C;
+          E = t.debugMode,
+          T = void 0 !== E && E;
       !function (e, t) {
         if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function");
       }(this, e), this.modal = document.getElementById(i), this.config = {
-        debugMode: E,
+        debugMode: T,
         disableScroll: m,
         openTrigger: u,
         closeTrigger: h,
@@ -9652,7 +9454,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         awaitCloseAnimation: w,
         awaitOpenAnimation: S,
         disableFocus: y
-      }, r.length > 0 && this.registerTriggers.apply(this, T(r)), this.onClick = this.onClick.bind(this), this.onKeydown = this.onKeydown.bind(this);
+      }, r.length > 0 && this.registerTriggers.apply(this, C(r)), this.onClick = this.onClick.bind(this), this.onKeydown = this.onKeydown.bind(this);
     }
 
     var t, i, n;
@@ -9746,8 +9548,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }, {
       key: "getFocusableNodes",
       value: function value() {
-        var e = this.modal.querySelectorAll(A);
-        return Array.apply(void 0, T(e));
+        var e = this.modal.querySelectorAll(T);
+        return Array.apply(void 0, C(e));
       }
     }, {
       key: "setFocusToFirstNode",
@@ -9776,16 +9578,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           e.shiftKey && 0 === i && (t[t.length - 1].focus(), e.preventDefault()), !e.shiftKey && t.length > 0 && i === t.length - 1 && (t[0].focus(), e.preventDefault());
         } else t[0].focus();
       }
-    }]) && E(t.prototype, i), n && E(t, n), e;
-  }(), L = null, M = function M(e) {
+    }]) && S(t.prototype, i), n && S(t, n), e;
+  }(), A = null, _ = function _(e) {
     if (!document.getElementById(e)) return console.warn("MicroModal: ❗Seems like you have missed %c'".concat(e, "'"), "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "ID somewhere in your code. Refer example below to resolve it."), console.warn("%cExample:", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", '<div class="modal" id="'.concat(e, '"></div>')), !1;
-  }, O = function O(e, t) {
+  }, L = function L(e, t) {
     if (function (e) {
       e.length <= 0 && (console.warn("MicroModal: ❗Please specify at least one %c'micromodal-trigger'", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", "data attribute."), console.warn("%cExample:", "background-color: #f8f9fa;color: #50596c;font-weight: bold;", '<a href="#" data-micromodal-trigger="my-modal"></a>'));
     }(e), !t) return !0;
 
     for (var i in t) {
-      M(i);
+      _(i);
     }
 
     return !0;
@@ -9794,7 +9596,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var t = Object.assign({}, {
         openTrigger: "data-micromodal-trigger"
       }, e),
-          i = T(document.querySelectorAll("[".concat(t.openTrigger, "]"))),
+          i = C(document.querySelectorAll("[".concat(t.openTrigger, "]"))),
           n = function (e, t) {
         var i = [];
         return e.forEach(function (e) {
@@ -9803,34 +9605,34 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }), i;
       }(i, t.openTrigger);
 
-      if (!0 !== t.debugMode || !1 !== O(i, n)) for (var r in n) {
+      if (!0 !== t.debugMode || !1 !== L(i, n)) for (var r in n) {
         var s = n[r];
-        t.targetModal = r, t.triggers = T(s), L = new _(t);
+        t.targetModal = r, t.triggers = C(s), A = new k(t);
       }
     },
     show: function show(e, t) {
       var i = t || {};
-      i.targetModal = e, !0 === i.debugMode && !1 === M(e) || (L && L.removeEventListeners(), (L = new _(i)).showModal());
+      i.targetModal = e, !0 === i.debugMode && !1 === _(e) || (A && A.removeEventListeners(), (A = new k(i)).showModal());
     },
     close: function close(e) {
-      e ? L.closeModalById(e) : L.closeModal();
+      e ? A.closeModalById(e) : A.closeModal();
     }
   });
 
-  window.MicroModal = I;
-  var P = I;
+  window.MicroModal = M;
+  var O = M;
 
-  function D(e) {
+  function I(e) {
     return null !== e && "object" == _typeof(e) && "constructor" in e && e.constructor === Object;
   }
 
-  function N(e, t) {
+  function P(e, t) {
     void 0 === e && (e = {}), void 0 === t && (t = {}), Object.keys(t).forEach(function (i) {
-      void 0 === e[i] ? e[i] = t[i] : D(t[i]) && D(e[i]) && Object.keys(t[i]).length > 0 && N(e[i], t[i]);
+      void 0 === e[i] ? e[i] = t[i] : I(t[i]) && I(e[i]) && Object.keys(t[i]).length > 0 && P(e[i], t[i]);
     });
   }
 
-  var j = {
+  var D = {
     body: {},
     addEventListener: function addEventListener() {},
     removeEventListener: function removeEventListener() {},
@@ -9881,13 +9683,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   };
 
-  function F() {
+  function N() {
     var e = "undefined" != typeof document ? document : {};
-    return N(e, j), e;
+    return P(e, D), e;
   }
 
-  var R = {
-    document: j,
+  var j = {
+    document: D,
     navigator: {
       userAgent: ""
     },
@@ -9935,24 +9737,24 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   };
 
-  function B() {
+  function F() {
     var e = "undefined" != typeof window ? window : {};
-    return N(e, R), e;
+    return P(e, j), e;
   }
 
-  function H(e) {
-    return (H = Object.setPrototypeOf ? Object.getPrototypeOf : function (e) {
+  function R(e) {
+    return (R = Object.setPrototypeOf ? Object.getPrototypeOf : function (e) {
       return e.__proto__ || Object.getPrototypeOf(e);
     })(e);
   }
 
-  function q(e, t) {
-    return (q = Object.setPrototypeOf || function (e, t) {
+  function B(e, t) {
+    return (B = Object.setPrototypeOf || function (e, t) {
       return e.__proto__ = t, e;
     })(e, t);
   }
 
-  function z() {
+  function H() {
     if ("undefined" == typeof Reflect || !Reflect.construct) return !1;
     if (Reflect.construct.sham) return !1;
     if ("function" == typeof Proxy) return !0;
@@ -9964,18 +9766,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   }
 
-  function G(e, t, i) {
-    return (G = z() ? Reflect.construct : function (e, t, i) {
+  function q(e, t, i) {
+    return (q = H() ? Reflect.construct : function (e, t, i) {
       var n = [null];
       n.push.apply(n, t);
       var r = new (Function.bind.apply(e, n))();
-      return i && q(r, i.prototype), r;
+      return i && B(r, i.prototype), r;
     }).apply(null, arguments);
   }
 
-  function W(e) {
+  function z(e) {
     var t = "function" == typeof Map ? new Map() : void 0;
-    return (W = function W(e) {
+    return (z = function z(e) {
       if (null === e || (i = e, -1 === Function.toString.call(i).indexOf("[native code]"))) return e;
       var i;
       if ("function" != typeof e) throw new TypeError("Super expression must either be null or a function");
@@ -9986,7 +9788,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
 
       function n() {
-        return G(e, arguments, H(this).constructor);
+        return q(e, arguments, R(this).constructor);
       }
 
       return n.prototype = Object.create(e.prototype, {
@@ -9996,11 +9798,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           writable: !0,
           configurable: !0
         }
-      }), q(n, e);
+      }), B(n, e);
     })(e);
   }
 
-  var $ = function (e) {
+  var G = function (e) {
     var t, i;
 
     function n(t) {
@@ -10019,26 +9821,26 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
 
     return i = e, (t = n).prototype = Object.create(i.prototype), t.prototype.constructor = t, t.__proto__ = i, n;
-  }(W(Array));
+  }(z(Array));
 
-  function V(e) {
+  function W(e) {
     void 0 === e && (e = []);
     var t = [];
     return e.forEach(function (e) {
-      Array.isArray(e) ? t.push.apply(t, V(e)) : t.push(e);
+      Array.isArray(e) ? t.push.apply(t, W(e)) : t.push(e);
     }), t;
   }
 
-  function K(e, t) {
+  function $(e, t) {
     return Array.prototype.filter.call(e, t);
   }
 
-  function U(e, t) {
-    var i = B(),
-        n = F(),
+  function V(e, t) {
+    var i = F(),
+        n = N(),
         r = [];
-    if (!t && e instanceof $) return e;
-    if (!e) return new $(r);
+    if (!t && e instanceof G) return e;
+    if (!e) return new G(r);
 
     if ("string" == typeof e) {
       var s = e.trim();
@@ -10062,11 +9864,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         return i;
       }(e.trim(), t || n);
     } else if (e.nodeType || e === i || e === n) r.push(e);else if (Array.isArray(e)) {
-      if (e instanceof $) return e;
+      if (e instanceof G) return e;
       r = e;
     }
 
-    return new $(function (e) {
+    return new G(function (e) {
       for (var t = [], i = 0; i < e.length; i += 1) {
         -1 === t.indexOf(e[i]) && t.push(e[i]);
       }
@@ -10075,10 +9877,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }(r));
   }
 
-  U.fn = $.prototype;
-  var X = "resize scroll".split(" ");
+  V.fn = G.prototype;
+  var K = "resize scroll".split(" ");
 
-  function Y(e) {
+  function U(e) {
     return function () {
       for (var t = arguments.length, i = new Array(t), n = 0; n < t; n++) {
         i[n] = arguments[n];
@@ -10086,7 +9888,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
       if (void 0 === i[0]) {
         for (var r = 0; r < this.length; r += 1) {
-          X.indexOf(e) < 0 && (e in this[r] ? this[r][e]() : U(this[r]).trigger(e));
+          K.indexOf(e) < 0 && (e in this[r] ? this[r][e]() : V(this[r]).trigger(e));
         }
 
         return this;
@@ -10096,14 +9898,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     };
   }
 
-  Y("click"), Y("blur"), Y("focus"), Y("focusin"), Y("focusout"), Y("keyup"), Y("keydown"), Y("keypress"), Y("submit"), Y("change"), Y("mousedown"), Y("mousemove"), Y("mouseup"), Y("mouseenter"), Y("mouseleave"), Y("mouseout"), Y("mouseover"), Y("touchstart"), Y("touchend"), Y("touchmove"), Y("resize"), Y("scroll");
-  var Q = {
+  U("click"), U("blur"), U("focus"), U("focusin"), U("focusout"), U("keyup"), U("keydown"), U("keypress"), U("submit"), U("change"), U("mousedown"), U("mousemove"), U("mouseup"), U("mouseenter"), U("mouseleave"), U("mouseout"), U("mouseover"), U("touchstart"), U("touchend"), U("touchmove"), U("resize"), U("scroll");
+  var X = {
     addClass: function addClass() {
       for (var e = arguments.length, t = new Array(e), i = 0; i < e; i++) {
         t[i] = arguments[i];
       }
 
-      var n = V(t.map(function (e) {
+      var n = W(t.map(function (e) {
         return e.split(" ");
       }));
       return this.forEach(function (e) {
@@ -10116,7 +9918,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         t[i] = arguments[i];
       }
 
-      var n = V(t.map(function (e) {
+      var n = W(t.map(function (e) {
         return e.split(" ");
       }));
       return this.forEach(function (e) {
@@ -10129,10 +9931,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         t[i] = arguments[i];
       }
 
-      var n = V(t.map(function (e) {
+      var n = W(t.map(function (e) {
         return e.split(" ");
       }));
-      return K(this, function (e) {
+      return $(this, function (e) {
         return n.filter(function (t) {
           return e.classList.contains(t);
         }).length > 0;
@@ -10143,7 +9945,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         t[i] = arguments[i];
       }
 
-      var n = V(t.map(function (e) {
+      var n = W(t.map(function (e) {
         return e.split(" ");
       }));
       this.forEach(function (e) {
@@ -10199,8 +10001,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         if (t) {
           var i = e.target.dom7EventData || [];
-          if (i.indexOf(e) < 0 && i.unshift(e), U(t).is(r)) s.apply(t, i);else for (var n = U(t).parents(), o = 0; o < n.length; o += 1) {
-            U(n[o]).is(r) && s.apply(n[o], i);
+          if (i.indexOf(e) < 0 && i.unshift(e), V(t).is(r)) s.apply(t, i);else for (var n = V(t).parents(), o = 0; o < n.length; o += 1) {
+            V(n[o]).is(r) && s.apply(n[o], i);
           }
         }
       }
@@ -10256,7 +10058,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       return this;
     },
     trigger: function trigger() {
-      for (var e = B(), t = arguments.length, i = new Array(t), n = 0; n < t; n++) {
+      for (var e = F(), t = arguments.length, i = new Array(t), n = 0; n < t; n++) {
         i[n] = arguments[n];
       }
 
@@ -10310,13 +10112,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       return null;
     },
     styles: function styles() {
-      var e = B();
+      var e = F();
       return this[0] ? e.getComputedStyle(this[0], null) : {};
     },
     offset: function offset() {
       if (this.length > 0) {
-        var e = B(),
-            t = F(),
+        var e = F(),
+            t = N(),
             i = this[0],
             n = i.getBoundingClientRect(),
             r = t.body,
@@ -10334,7 +10136,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     },
     css: function css(e, t) {
       var i,
-          n = B();
+          n = F();
 
       if (1 === arguments.length) {
         if ("string" != typeof e) {
@@ -10386,8 +10188,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     is: function is(e) {
       var t,
           i,
-          n = B(),
-          r = F(),
+          n = F(),
+          r = N(),
           s = this[0];
       if (!s || void 0 === e) return !1;
 
@@ -10396,7 +10198,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         if (s.webkitMatchesSelector) return s.webkitMatchesSelector(e);
         if (s.msMatchesSelector) return s.msMatchesSelector(e);
 
-        for (t = U(e), i = 0; i < t.length; i += 1) {
+        for (t = V(e), i = 0; i < t.length; i += 1) {
           if (t[i] === s) return !0;
         }
 
@@ -10406,7 +10208,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       if (e === r) return s === r;
       if (e === n) return s === n;
 
-      if (e.nodeType || e instanceof $) {
+      if (e.nodeType || e instanceof G) {
         for (t = e.nodeType ? [e] : e, i = 0; i < t.length; i += 1) {
           if (t[i] === s) return !0;
         }
@@ -10431,17 +10233,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     eq: function eq(e) {
       if (void 0 === e) return this;
       var t = this.length;
-      if (e > t - 1) return U([]);
+      if (e > t - 1) return V([]);
 
       if (e < 0) {
         var i = t + e;
-        return U(i < 0 ? [] : [this[i]]);
+        return V(i < 0 ? [] : [this[i]]);
       }
 
-      return U([this[e]]);
+      return V([this[e]]);
     },
     append: function append() {
-      for (var e, t = F(), i = 0; i < arguments.length; i += 1) {
+      for (var e, t = N(), i = 0; i < arguments.length; i += 1) {
         e = i < 0 || arguments.length <= i ? void 0 : arguments[i];
 
         for (var n = 0; n < this.length; n += 1) {
@@ -10451,7 +10253,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             for (r.innerHTML = e; r.firstChild;) {
               this[n].appendChild(r.firstChild);
             }
-          } else if (e instanceof $) for (var s = 0; s < e.length; s += 1) {
+          } else if (e instanceof G) for (var s = 0; s < e.length; s += 1) {
             this[n].appendChild(e[s]);
           } else this[n].appendChild(e);
         }
@@ -10462,7 +10264,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     prepend: function prepend(e) {
       var t,
           i,
-          n = F();
+          n = N();
 
       for (t = 0; t < this.length; t += 1) {
         if ("string" == typeof e) {
@@ -10471,7 +10273,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           for (r.innerHTML = e, i = r.childNodes.length - 1; i >= 0; i -= 1) {
             this[t].insertBefore(r.childNodes[i], this[t].childNodes[0]);
           }
-        } else if (e instanceof $) for (i = 0; i < e.length; i += 1) {
+        } else if (e instanceof G) for (i = 0; i < e.length; i += 1) {
           this[t].insertBefore(e[i], this[t].childNodes[0]);
         } else this[t].insertBefore(e, this[t].childNodes[0]);
       }
@@ -10479,59 +10281,59 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       return this;
     },
     next: function next(e) {
-      return this.length > 0 ? e ? this[0].nextElementSibling && U(this[0].nextElementSibling).is(e) ? U([this[0].nextElementSibling]) : U([]) : this[0].nextElementSibling ? U([this[0].nextElementSibling]) : U([]) : U([]);
+      return this.length > 0 ? e ? this[0].nextElementSibling && V(this[0].nextElementSibling).is(e) ? V([this[0].nextElementSibling]) : V([]) : this[0].nextElementSibling ? V([this[0].nextElementSibling]) : V([]) : V([]);
     },
     nextAll: function nextAll(e) {
       var t = [],
           i = this[0];
-      if (!i) return U([]);
+      if (!i) return V([]);
 
       for (; i.nextElementSibling;) {
         var n = i.nextElementSibling;
-        e ? U(n).is(e) && t.push(n) : t.push(n), i = n;
+        e ? V(n).is(e) && t.push(n) : t.push(n), i = n;
       }
 
-      return U(t);
+      return V(t);
     },
     prev: function prev(e) {
       if (this.length > 0) {
         var t = this[0];
-        return e ? t.previousElementSibling && U(t.previousElementSibling).is(e) ? U([t.previousElementSibling]) : U([]) : t.previousElementSibling ? U([t.previousElementSibling]) : U([]);
+        return e ? t.previousElementSibling && V(t.previousElementSibling).is(e) ? V([t.previousElementSibling]) : V([]) : t.previousElementSibling ? V([t.previousElementSibling]) : V([]);
       }
 
-      return U([]);
+      return V([]);
     },
     prevAll: function prevAll(e) {
       var t = [],
           i = this[0];
-      if (!i) return U([]);
+      if (!i) return V([]);
 
       for (; i.previousElementSibling;) {
         var n = i.previousElementSibling;
-        e ? U(n).is(e) && t.push(n) : t.push(n), i = n;
+        e ? V(n).is(e) && t.push(n) : t.push(n), i = n;
       }
 
-      return U(t);
+      return V(t);
     },
     parent: function parent(e) {
       for (var t = [], i = 0; i < this.length; i += 1) {
-        null !== this[i].parentNode && (e ? U(this[i].parentNode).is(e) && t.push(this[i].parentNode) : t.push(this[i].parentNode));
+        null !== this[i].parentNode && (e ? V(this[i].parentNode).is(e) && t.push(this[i].parentNode) : t.push(this[i].parentNode));
       }
 
-      return U(t);
+      return V(t);
     },
     parents: function parents(e) {
       for (var t = [], i = 0; i < this.length; i += 1) {
         for (var n = this[i].parentNode; n;) {
-          e ? U(n).is(e) && t.push(n) : t.push(n), n = n.parentNode;
+          e ? V(n).is(e) && t.push(n) : t.push(n), n = n.parentNode;
         }
       }
 
-      return U(t);
+      return V(t);
     },
     closest: function closest(e) {
       var t = this;
-      return void 0 === e ? U([]) : (t.is(e) || (t = t.parents(e).eq(0)), t);
+      return void 0 === e ? V([]) : (t.is(e) || (t = t.parents(e).eq(0)), t);
     },
     find: function find(e) {
       for (var t = [], i = 0; i < this.length; i += 1) {
@@ -10540,19 +10342,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
       }
 
-      return U(t);
+      return V(t);
     },
     children: function children(e) {
       for (var t = [], i = 0; i < this.length; i += 1) {
         for (var n = this[i].children, r = 0; r < n.length; r += 1) {
-          e && !U(n[r]).is(e) || t.push(n[r]);
+          e && !V(n[r]).is(e) || t.push(n[r]);
         }
       }
 
-      return U(t);
+      return V(t);
     },
     filter: function filter(e) {
-      return U(K(this, e));
+      return V($(this, e));
     },
     remove: function remove() {
       for (var e = 0; e < this.length; e += 1) {
@@ -10562,51 +10364,51 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       return this;
     }
   };
-  Object.keys(Q).forEach(function (e) {
-    U.fn[e] = Q[e];
+  Object.keys(X).forEach(function (e) {
+    V.fn[e] = X[e];
   });
-  var J,
-      Z,
-      ee,
-      te = U;
+  var Y,
+      Q,
+      J,
+      Z = V;
 
-  function ie(e, t) {
+  function ee(e, t) {
     return void 0 === t && (t = 0), setTimeout(e, t);
   }
 
-  function ne() {
+  function te() {
     return Date.now();
   }
 
-  function re(e) {
+  function ie(e) {
     return "object" == _typeof(e) && null !== e && e.constructor && e.constructor === Object;
   }
 
-  function se() {
+  function ne() {
     for (var e = Object(arguments.length <= 0 ? void 0 : arguments[0]), t = 1; t < arguments.length; t += 1) {
       var i = t < 0 || arguments.length <= t ? void 0 : arguments[t];
       if (null != i) for (var n = Object.keys(Object(i)), r = 0, s = n.length; r < s; r += 1) {
         var o = n[r],
             a = Object.getOwnPropertyDescriptor(i, o);
-        void 0 !== a && a.enumerable && (re(e[o]) && re(i[o]) ? se(e[o], i[o]) : !re(e[o]) && re(i[o]) ? (e[o] = {}, se(e[o], i[o])) : e[o] = i[o]);
+        void 0 !== a && a.enumerable && (ie(e[o]) && ie(i[o]) ? ne(e[o], i[o]) : !ie(e[o]) && ie(i[o]) ? (e[o] = {}, ne(e[o], i[o])) : e[o] = i[o]);
       }
     }
 
     return e;
   }
 
-  function oe(e, t) {
+  function re(e, t) {
     Object.keys(t).forEach(function (i) {
-      re(t[i]) && Object.keys(t[i]).forEach(function (n) {
+      ie(t[i]) && Object.keys(t[i]).forEach(function (n) {
         "function" == typeof t[i][n] && (t[i][n] = t[i][n].bind(e));
       }), e[i] = t[i];
     });
   }
 
-  function ae() {
-    return J || (J = function () {
-      var e = B(),
-          t = F();
+  function se() {
+    return Y || (Y = function () {
+      var e = F(),
+          t = N();
       return {
         touch: !!("ontouchstart" in e || e.DocumentTouch && t instanceof e.DocumentTouch),
         pointerEvents: !!e.PointerEvent && "maxTouchPoints" in e.navigator && e.navigator.maxTouchPoints >= 0,
@@ -10627,14 +10429,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }(),
         gestures: "ongesturestart" in e
       };
-    }()), J;
+    }()), Y;
   }
 
-  function le(e) {
-    return void 0 === e && (e = {}), Z || (Z = function (e) {
+  function oe(e) {
+    return void 0 === e && (e = {}), Q || (Q = function (e) {
       var t = (void 0 === e ? {} : e).userAgent,
-          i = ae(),
-          n = B(),
+          i = se(),
+          n = F(),
           r = n.navigator.platform,
           s = t || n.navigator.userAgent,
           o = {
@@ -10650,26 +10452,26 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           f = "Win32" === r,
           p = "MacIntel" === r;
       return !u && p && i.touch && ["1024x1366", "1366x1024", "834x1194", "1194x834", "834x1112", "1112x834", "768x1024", "1024x768", "820x1180", "1180x820", "810x1080", "1080x810"].indexOf(a + "x" + l) >= 0 && ((u = s.match(/(Version)\/([\d.]+)/)) || (u = [0, 1, "13_0_0"]), p = !1), c && !f && (o.os = "android", o.android = !0), (u || h || d) && (o.os = "ios", o.ios = !0), o;
-    }(e)), Z;
+    }(e)), Q;
   }
 
-  function ce() {
-    return ee || (ee = function () {
+  function ae() {
+    return J || (J = function () {
       var e,
-          t = B();
+          t = F();
       return {
         isEdge: !!t.navigator.userAgent.match(/Edge/g),
         isSafari: (e = t.navigator.userAgent.toLowerCase(), e.indexOf("safari") >= 0 && e.indexOf("chrome") < 0 && e.indexOf("android") < 0),
         isWebView: /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(t.navigator.userAgent)
       };
-    }()), ee;
+    }()), J;
   }
 
-  var ue = {
+  var le = {
     name: "resize",
     create: function create() {
       var e = this;
-      se(e, {
+      ne(e, {
         resize: {
           resizeHandler: function resizeHandler() {
             e && !e.destroyed && e.initialized && (e.emit("beforeResize"), e.emit("resize"));
@@ -10682,18 +10484,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     },
     on: {
       init: function init(e) {
-        var t = B();
+        var t = F();
         t.addEventListener("resize", e.resize.resizeHandler), t.addEventListener("orientationchange", e.resize.orientationChangeHandler);
       },
       destroy: function destroy(e) {
-        var t = B();
+        var t = F();
         t.removeEventListener("resize", e.resize.resizeHandler), t.removeEventListener("orientationchange", e.resize.orientationChangeHandler);
       }
     }
   };
 
-  function de() {
-    return (de = Object.assign || function (e) {
+  function ce() {
+    return (ce = Object.assign || function (e) {
       for (var t = 1; t < arguments.length; t++) {
         var i = arguments[t];
 
@@ -10706,10 +10508,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }).apply(this, arguments);
   }
 
-  var he = {
+  var ue = {
     attach: function attach(e, t) {
       void 0 === t && (t = {});
-      var i = B(),
+      var i = F(),
           n = this,
           r = new (i.MutationObserver || i.WebkitMutationObserver)(function (e) {
         if (1 !== e.length) {
@@ -10744,7 +10546,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }), this.observer.observers = [];
     }
   },
-      fe = {
+      de = {
     name: "observer",
     params: {
       observer: !1,
@@ -10752,8 +10554,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       observeSlideChildren: !1
     },
     create: function create() {
-      oe(this, {
-        observer: de({}, he, {
+      re(this, {
+        observer: ce({}, ue, {
           observers: []
         })
       });
@@ -10768,9 +10570,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   };
 
-  function pe(e) {
-    var t = F(),
-        i = B(),
+  function he(e) {
+    var t = N(),
+        i = F(),
         n = this.touchEventsData,
         r = this.params,
         s = this.touches;
@@ -10778,8 +10580,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     if (!this.animating || !r.preventInteractionOnTransition) {
       var o = e;
       o.originalEvent && (o = o.originalEvent);
-      var a = te(o.target);
-      if ("wrapper" !== r.touchEventsTarget || a.closest(this.wrapperEl).length) if (n.isTouchEvent = "touchstart" === o.type, n.isTouchEvent || !("which" in o) || 3 !== o.which) if (!(!n.isTouchEvent && "button" in o && o.button > 0)) if (!n.isTouched || !n.isMoved) if (!!r.noSwipingClass && "" !== r.noSwipingClass && o.target && o.target.shadowRoot && e.path && e.path[0] && (a = te(e.path[0])), r.noSwiping && a.closest(r.noSwipingSelector ? r.noSwipingSelector : "." + r.noSwipingClass)[0]) this.allowClick = !0;else if (!r.swipeHandler || a.closest(r.swipeHandler)[0]) {
+      var a = Z(o.target);
+      if ("wrapper" !== r.touchEventsTarget || a.closest(this.wrapperEl).length) if (n.isTouchEvent = "touchstart" === o.type, n.isTouchEvent || !("which" in o) || 3 !== o.which) if (!(!n.isTouchEvent && "button" in o && o.button > 0)) if (!n.isTouched || !n.isMoved) if (!!r.noSwipingClass && "" !== r.noSwipingClass && o.target && o.target.shadowRoot && e.path && e.path[0] && (a = Z(e.path[0])), r.noSwiping && a.closest(r.noSwipingSelector ? r.noSwipingSelector : "." + r.noSwipingClass)[0]) this.allowClick = !0;else if (!r.swipeHandler || a.closest(r.swipeHandler)[0]) {
         s.currentX = "touchstart" === o.type ? o.targetTouches[0].pageX : o.pageX, s.currentY = "touchstart" === o.type ? o.targetTouches[0].pageY : o.pageY;
         var l = s.currentX,
             c = s.currentY,
@@ -10791,15 +10593,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           e.preventDefault();
         }
 
-        if (se(n, {
+        if (ne(n, {
           isTouched: !0,
           isMoved: !1,
           allowTouchCallbacks: !0,
           isScrolling: void 0,
           startMoving: void 0
-        }), s.startX = l, s.startY = c, n.touchStartTime = ne(), this.allowClick = !0, this.updateSize(), this.swipeDirection = void 0, r.threshold > 0 && (n.allowThresholdMove = !1), "touchstart" !== o.type) {
+        }), s.startX = l, s.startY = c, n.touchStartTime = te(), this.allowClick = !0, this.updateSize(), this.swipeDirection = void 0, r.threshold > 0 && (n.allowThresholdMove = !1), "touchstart" !== o.type) {
           var h = !0;
-          a.is(n.formElements) && (h = !1), t.activeElement && te(t.activeElement).is(n.formElements) && t.activeElement !== a[0] && t.activeElement.blur();
+          a.is(n.formElements) && (h = !1), t.activeElement && Z(t.activeElement).is(n.formElements) && t.activeElement !== a[0] && t.activeElement.blur();
           var f = h && this.allowTouchMove && r.touchStartPreventDefault;
           !r.touchStartForcePreventDefault && !f || a[0].isContentEditable || o.preventDefault();
         }
@@ -10809,8 +10611,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   }
 
-  function ve(e) {
-    var t = F(),
+  function fe(e) {
+    var t = N(),
         i = this.touchEventsData,
         n = this.params,
         r = this.touches,
@@ -10823,16 +10625,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             l = "touchmove" === o.type ? a.pageX : o.pageX,
             c = "touchmove" === o.type ? a.pageY : o.pageY;
         if (o.preventedByNestedSwiper) return r.startX = l, void (r.startY = c);
-        if (!this.allowTouchMove) return this.allowClick = !1, void (i.isTouched && (se(r, {
+        if (!this.allowTouchMove) return this.allowClick = !1, void (i.isTouched && (ne(r, {
           startX: l,
           startY: c,
           currentX: l,
           currentY: c
-        }), i.touchStartTime = ne()));
+        }), i.touchStartTime = te()));
         if (i.isTouchEvent && n.touchReleaseOnEdges && !n.loop) if (this.isVertical()) {
           if (c < r.startY && this.translate <= this.maxTranslate() || c > r.startY && this.translate >= this.minTranslate()) return i.isTouched = !1, void (i.isMoved = !1);
         } else if (l < r.startX && this.translate <= this.maxTranslate() || l > r.startX && this.translate >= this.minTranslate()) return;
-        if (i.isTouchEvent && t.activeElement && o.target === t.activeElement && te(o.target).is(i.formElements)) return i.isMoved = !0, void (this.allowClick = !1);
+        if (i.isTouchEvent && t.activeElement && o.target === t.activeElement && Z(o.target).is(i.formElements)) return i.isMoved = !0, void (this.allowClick = !1);
 
         if (i.allowTouchCallbacks && this.emit("touchMove", o), !(o.targetTouches && o.targetTouches.length > 1)) {
           r.currentX = l, r.currentY = c;
@@ -10859,7 +10661,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                 time: i.touchStartTime
               }), i.velocities.push({
                 position: r[this.isHorizontal() ? "currentX" : "currentY"],
-                time: ne()
+                time: te()
               })), this.updateProgress(i.currentTranslate), this.setTranslate(i.currentTranslate));
             }
           }
@@ -10868,7 +10670,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     } else i.startMoving && i.isScrolling && this.emit("touchMoveOpposite", o);
   }
 
-  function me(e) {
+  function pe(e) {
     var t = this,
         i = t.touchEventsData,
         n = t.params,
@@ -10881,9 +10683,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     if (c.originalEvent && (c = c.originalEvent), i.allowTouchCallbacks && t.emit("touchEnd", c), i.allowTouchCallbacks = !1, !i.isTouched) return i.isMoved && n.grabCursor && t.setGrabCursor(!1), i.isMoved = !1, void (i.startMoving = !1);
     n.grabCursor && i.isMoved && i.isTouched && (!0 === t.allowSlideNext || !0 === t.allowSlidePrev) && t.setGrabCursor(!1);
     var u,
-        d = ne(),
+        d = te(),
         h = d - i.touchStartTime;
-    if (t.allowClick && (t.updateClickedSlide(c), t.emit("tap click", c), h < 300 && d - i.lastClickTime < 300 && t.emit("doubleTap doubleClick", c)), i.lastClickTime = ne(), ie(function () {
+    if (t.allowClick && (t.updateClickedSlide(c), t.emit("tap click", c), h < 300 && d - i.lastClickTime < 300 && t.emit("doubleTap doubleClick", c)), i.lastClickTime = te(), ee(function () {
       t.destroyed || (t.allowClick = !0);
     }), !i.isTouched || !i.isMoved || !t.swipeDirection || 0 === r.diff || i.currentTranslate === i.startTranslate) return i.isTouched = !1, i.isMoved = !1, void (i.startMoving = !1);
     if (i.isTouched = !1, i.isMoved = !1, i.startMoving = !1, u = n.followFinger ? s ? t.translate : -t.translate : -i.currentTranslate, !n.cssMode) if (n.freeMode) {
@@ -10896,7 +10698,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               p = i.velocities.pop(),
               v = f.position - p.position,
               m = f.time - p.time;
-          t.velocity = v / m, t.velocity /= 2, Math.abs(t.velocity) < n.freeModeMinimumVelocity && (t.velocity = 0), (m > 150 || ne() - f.time > 300) && (t.velocity = 0);
+          t.velocity = v / m, t.velocity /= 2, Math.abs(t.velocity) < n.freeModeMinimumVelocity && (t.velocity = 0), (m > 150 || te() - f.time > 300) && (t.velocity = 0);
         } else t.velocity = 0;
 
         t.velocity *= n.freeModeMomentumVelocityRatio, i.velocities.length = 0;
@@ -10960,7 +10762,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   }
 
-  function ge() {
+  function ve() {
     var e = this.params,
         t = this.el;
 
@@ -10973,11 +10775,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   }
 
-  function ye(e) {
+  function me(e) {
     this.allowClick || (this.params.preventClicks && e.preventDefault(), this.params.preventClicksPropagation && this.animating && (e.stopPropagation(), e.stopImmediatePropagation()));
   }
 
-  function be() {
+  function ge() {
     var e = this.wrapperEl,
         t = this.rtlTranslate;
     this.previousTranslate = this.translate, this.isHorizontal() ? this.translate = t ? e.scrollWidth - e.offsetWidth - e.scrollLeft : -e.scrollLeft : this.translate = -e.scrollTop, -0 === this.translate && (this.translate = 0), this.updateActiveIndex(), this.updateSlidesClasses();
@@ -10985,11 +10787,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     (0 === i ? 0 : (this.translate - this.minTranslate()) / i) !== this.progress && this.updateProgress(t ? -this.translate : this.translate), this.emit("setTranslate", this.translate, !1);
   }
 
-  var we = !1;
+  var ye = !1;
 
-  function xe() {}
+  function be() {}
 
-  var Se = {
+  var we = {
     init: !0,
     direction: "horizontal",
     touchEventsTarget: "container",
@@ -11085,20 +10887,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     _emitClasses: !1
   };
 
-  function Ce(e, t) {
+  function xe(e, t) {
     for (var i = 0; i < t.length; i++) {
       var n = t[i];
       n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n);
     }
   }
 
-  var Ee = {
+  var Se = {
     modular: {
       useParams: function useParams(e) {
         var t = this;
         t.modules && Object.keys(t.modules).forEach(function (i) {
           var n = t.modules[i];
-          n.params && se(e, n.params);
+          n.params && ne(e, n.params);
         });
       },
       useModules: function useModules(e) {
@@ -11183,14 +10985,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var e,
             t,
             i = this.$el;
-        e = void 0 !== this.params.width && null !== this.params.width ? this.params.width : i[0].clientWidth, t = void 0 !== this.params.height && null !== this.params.height ? this.params.height : i[0].clientHeight, 0 === e && this.isHorizontal() || 0 === t && this.isVertical() || (e = e - parseInt(i.css("padding-left") || 0, 10) - parseInt(i.css("padding-right") || 0, 10), t = t - parseInt(i.css("padding-top") || 0, 10) - parseInt(i.css("padding-bottom") || 0, 10), Number.isNaN(e) && (e = 0), Number.isNaN(t) && (t = 0), se(this, {
+        e = void 0 !== this.params.width && null !== this.params.width ? this.params.width : i[0].clientWidth, t = void 0 !== this.params.height && null !== this.params.height ? this.params.height : i[0].clientHeight, 0 === e && this.isHorizontal() || 0 === t && this.isVertical() || (e = e - parseInt(i.css("padding-left") || 0, 10) - parseInt(i.css("padding-right") || 0, 10), t = t - parseInt(i.css("padding-top") || 0, 10) - parseInt(i.css("padding-bottom") || 0, 10), Number.isNaN(e) && (e = 0), Number.isNaN(t) && (t = 0), ne(this, {
           width: e,
           height: t,
           size: this.isHorizontal() ? e : t
         }));
       },
       updateSlides: function updateSlides() {
-        var e = B(),
+        var e = F(),
             t = this.params,
             i = this.$wrapperEl,
             n = this.size,
@@ -11257,9 +11059,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             if ("none" !== L.css("display")) {
               if ("auto" === t.slidesPerView) {
                 var j = e.getComputedStyle(L[0], null),
-                    F = L[0].style.transform,
-                    R = L[0].style.webkitTransform;
-                if (F && (L[0].style.transform = "none"), R && (L[0].style.webkitTransform = "none"), t.roundLengths) C = this.isHorizontal() ? L.outerWidth(!0) : L.outerHeight(!0);else if (this.isHorizontal()) {
+                    R = L[0].style.transform,
+                    B = L[0].style.webkitTransform;
+                if (R && (L[0].style.transform = "none"), B && (L[0].style.webkitTransform = "none"), t.roundLengths) C = this.isHorizontal() ? L.outerWidth(!0) : L.outerHeight(!0);else if (this.isHorizontal()) {
                   var H = parseFloat(j.getPropertyValue("width") || 0),
                       q = parseFloat(j.getPropertyValue("padding-left") || 0),
                       z = parseFloat(j.getPropertyValue("padding-right") || 0),
@@ -11284,7 +11086,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
                     C = U + X + Y + Q + J + (ee.offsetHeight - te);
                   }
                 }
-                F && (L[0].style.transform = F), R && (L[0].style.webkitTransform = R), t.roundLengths && (C = Math.floor(C));
+                R && (L[0].style.transform = R), B && (L[0].style.webkitTransform = B), t.roundLengths && (C = Math.floor(C));
               } else C = (n - (t.slidesPerView - 1) * y) / t.slidesPerView, t.roundLengths && (C = Math.floor(C)), l[_] && (this.isHorizontal() ? l[_].style.width = C + "px" : l[_].style.height = C + "px");
 
               l[_] && (l[_].swiperSlideSize = C), h.push(C), t.centeredSlides ? (b = b + C / 2 + w / 2 + y, 0 === w && 0 !== _ && (b = b - n / 2 - y), 0 === _ && (b = b - n / 2 - y), Math.abs(b) < .001 && (b = 0), t.roundLengths && (b = Math.floor(b)), x % t.slidesPerGroup == 0 && u.push(b), d.push(b)) : (t.roundLengths && (b = Math.floor(b)), (x - Math.min(this.params.slidesPerGroupSkip, x)) % this.params.slidesPerGroup == 0 && u.push(b), d.push(b), b = b + C + y), this.virtualSize += C + y, w = C, x += 1;
@@ -11305,8 +11107,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             E = [];
 
             for (var ie = 0; ie < u.length; ie += 1) {
-              var ne = u[ie];
-              t.roundLengths && (ne = Math.floor(ne)), u[ie] < this.virtualSize + u[0] && E.push(ne);
+              var re = u[ie];
+              t.roundLengths && (re = Math.floor(re)), u[ie] < this.virtualSize + u[0] && E.push(re);
             }
 
             u = E;
@@ -11315,9 +11117,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           if (!t.centeredSlides) {
             E = [];
 
-            for (var re = 0; re < u.length; re += 1) {
-              var oe = u[re];
-              t.roundLengths && (oe = Math.floor(oe)), u[re] <= this.virtualSize - n && E.push(oe);
+            for (var se = 0; se < u.length; se += 1) {
+              var oe = u[se];
+              t.roundLengths && (oe = Math.floor(oe)), u[se] <= this.virtualSize - n && E.push(oe);
             }
 
             u = E, Math.floor(this.virtualSize - n) - Math.floor(u[u.length - 1]) > 1 && u.push(this.virtualSize - n);
@@ -11355,7 +11157,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             }
           }
 
-          se(this, {
+          ne(this, {
             slides: l,
             snapGrid: u,
             slidesGrid: d,
@@ -11415,7 +11217,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             o.progress = n ? -a : a;
           }
 
-          this.visibleSlides = te(this.visibleSlides);
+          this.visibleSlides = Z(this.visibleSlides);
         }
       },
       updateProgress: function updateProgress(e) {
@@ -11431,7 +11233,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             o = this.isEnd,
             a = s,
             l = o;
-        0 === n ? (r = 0, s = !0, o = !0) : (s = (r = (e - this.minTranslate()) / n) <= 0, o = r >= 1), se(this, {
+        0 === n ? (r = 0, s = !0, o = !0) : (s = (r = (e - this.minTranslate()) / n) <= 0, o = r >= 1), ne(this, {
           progress: r,
           isBeginning: s,
           isEnd: o
@@ -11477,7 +11279,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         if (t >= r.length && (t = r.length - 1), c !== o) {
           var h = parseInt(this.slides.eq(c).attr("data-swiper-slide-index") || c, 10);
-          se(this, {
+          ne(this, {
             snapIndex: t,
             realIndex: h,
             previousIndex: o,
@@ -11487,13 +11289,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       },
       updateClickedSlide: function updateClickedSlide(e) {
         var t = this.params,
-            i = te(e.target).closest("." + t.slideClass)[0],
+            i = Z(e.target).closest("." + t.slideClass)[0],
             n = !1;
         if (i) for (var r = 0; r < this.slides.length; r += 1) {
           this.slides[r] === i && (n = !0);
         }
         if (!i || !n) return this.clickedSlide = void 0, void (this.clickedIndex = void 0);
-        this.clickedSlide = i, this.virtual && this.params.virtual.enabled ? this.clickedIndex = parseInt(te(i).attr("data-swiper-slide-index"), 10) : this.clickedIndex = te(i).index(), t.slideToClickedSlide && void 0 !== this.clickedIndex && this.clickedIndex !== this.activeIndex && this.slideToClickedSlide();
+        this.clickedSlide = i, this.virtual && this.params.virtual.enabled ? this.clickedIndex = parseInt(Z(i).attr("data-swiper-slide-index"), 10) : this.clickedIndex = Z(i).index(), t.slideToClickedSlide && void 0 !== this.clickedIndex && this.clickedIndex !== this.activeIndex && this.slideToClickedSlide();
       }
     },
     translate: {
@@ -11511,7 +11313,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           var i,
               n,
               r,
-              s = B(),
+              s = F(),
               o = s.getComputedStyle(e, null);
           return s.WebKitCSSMatrix ? ((n = o.transform || o.webkitTransform).split(",").length > 6 && (n = n.split(", ").map(function (e) {
             return e.replace(",", ".");
@@ -11724,9 +11526,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         if (i.loop) {
           if (t.animating) return;
-          e = parseInt(te(t.clickedSlide).attr("data-swiper-slide-index"), 10), i.centeredSlides ? s < t.loopedSlides - r / 2 || s > t.slides.length - t.loopedSlides + r / 2 ? (t.loopFix(), s = n.children("." + i.slideClass + '[data-swiper-slide-index="' + e + '"]:not(.' + i.slideDuplicateClass + ")").eq(0).index(), ie(function () {
+          e = parseInt(Z(t.clickedSlide).attr("data-swiper-slide-index"), 10), i.centeredSlides ? s < t.loopedSlides - r / 2 || s > t.slides.length - t.loopedSlides + r / 2 ? (t.loopFix(), s = n.children("." + i.slideClass + '[data-swiper-slide-index="' + e + '"]:not(.' + i.slideDuplicateClass + ")").eq(0).index(), ee(function () {
             t.slideTo(s);
-          })) : t.slideTo(s) : s > t.slides.length - r ? (t.loopFix(), s = n.children("." + i.slideClass + '[data-swiper-slide-index="' + e + '"]:not(.' + i.slideDuplicateClass + ")").eq(0).index(), ie(function () {
+          })) : t.slideTo(s) : s > t.slides.length - r ? (t.loopFix(), s = n.children("." + i.slideClass + '[data-swiper-slide-index="' + e + '"]:not(.' + i.slideDuplicateClass + ")").eq(0).index(), ee(function () {
             t.slideTo(s);
           })) : t.slideTo(s);
         } else t.slideTo(s);
@@ -11735,7 +11537,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     loop: {
       loopCreate: function loopCreate() {
         var e = this,
-            t = F(),
+            t = N(),
             i = e.params,
             n = e.$wrapperEl;
         n.children("." + i.slideClass + "." + i.slideDuplicateClass).remove();
@@ -11746,7 +11548,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
           if (s !== i.slidesPerGroup) {
             for (var o = 0; o < s; o += 1) {
-              var a = te(t.createElement("div")).addClass(i.slideClass + " " + i.slideBlankClass);
+              var a = Z(t.createElement("div")).addClass(i.slideClass + " " + i.slideBlankClass);
               n.append(a);
             }
 
@@ -11758,16 +11560,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         var l = [],
             c = [];
         r.each(function (t, i) {
-          var n = te(t);
+          var n = Z(t);
           i < e.loopedSlides && c.push(t), i < r.length && i >= r.length - e.loopedSlides && l.push(t), n.attr("data-swiper-slide-index", i);
         });
 
         for (var u = 0; u < c.length; u += 1) {
-          n.append(te(c[u].cloneNode(!0)).addClass(i.slideDuplicateClass));
+          n.append(Z(c[u].cloneNode(!0)).addClass(i.slideDuplicateClass));
         }
 
         for (var d = l.length - 1; d >= 0; d -= 1) {
-          n.prepend(te(l[d].cloneNode(!0)).addClass(i.slideDuplicateClass));
+          n.prepend(Z(l[d].cloneNode(!0)).addClass(i.slideDuplicateClass));
         }
       },
       loopFix: function loopFix() {
@@ -11886,14 +11688,14 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     },
     events: {
       attachEvents: function attachEvents() {
-        var e = F(),
+        var e = N(),
             t = this.params,
             i = this.touchEvents,
             n = this.el,
             r = this.wrapperEl,
             s = this.device,
             o = this.support;
-        this.onTouchStart = pe.bind(this), this.onTouchMove = ve.bind(this), this.onTouchEnd = me.bind(this), t.cssMode && (this.onScroll = be.bind(this)), this.onClick = ye.bind(this);
+        this.onTouchStart = he.bind(this), this.onTouchMove = fe.bind(this), this.onTouchEnd = pe.bind(this), t.cssMode && (this.onScroll = ge.bind(this)), this.onClick = me.bind(this);
         var a = !!t.nested;
         if (!o.touch && o.pointerEvents) n.addEventListener(i.start, this.onTouchStart, !1), e.addEventListener(i.move, this.onTouchMove, a), e.addEventListener(i.end, this.onTouchEnd, !1);else {
           if (o.touch) {
@@ -11904,15 +11706,15 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             n.addEventListener(i.start, this.onTouchStart, l), n.addEventListener(i.move, this.onTouchMove, o.passiveListener ? {
               passive: !1,
               capture: a
-            } : a), n.addEventListener(i.end, this.onTouchEnd, l), i.cancel && n.addEventListener(i.cancel, this.onTouchEnd, l), we || (e.addEventListener("touchstart", xe), we = !0);
+            } : a), n.addEventListener(i.end, this.onTouchEnd, l), i.cancel && n.addEventListener(i.cancel, this.onTouchEnd, l), ye || (e.addEventListener("touchstart", be), ye = !0);
           }
 
           (t.simulateTouch && !s.ios && !s.android || t.simulateTouch && !o.touch && s.ios) && (n.addEventListener("mousedown", this.onTouchStart, !1), e.addEventListener("mousemove", this.onTouchMove, a), e.addEventListener("mouseup", this.onTouchEnd, !1));
         }
-        (t.preventClicks || t.preventClicksPropagation) && n.addEventListener("click", this.onClick, !0), t.cssMode && r.addEventListener("scroll", this.onScroll), t.updateOnWindowResize ? this.on(s.ios || s.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", ge, !0) : this.on("observerUpdate", ge, !0);
+        (t.preventClicks || t.preventClicksPropagation) && n.addEventListener("click", this.onClick, !0), t.cssMode && r.addEventListener("scroll", this.onScroll), t.updateOnWindowResize ? this.on(s.ios || s.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", ve, !0) : this.on("observerUpdate", ve, !0);
       },
       detachEvents: function detachEvents() {
-        var e = F(),
+        var e = N(),
             t = this.params,
             i = this.touchEvents,
             n = this.el,
@@ -11931,7 +11733,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
           (t.simulateTouch && !s.ios && !s.android || t.simulateTouch && !o.touch && s.ios) && (n.removeEventListener("mousedown", this.onTouchStart, !1), e.removeEventListener("mousemove", this.onTouchMove, a), e.removeEventListener("mouseup", this.onTouchEnd, !1));
         }
-        (t.preventClicks || t.preventClicksPropagation) && n.removeEventListener("click", this.onClick, !0), t.cssMode && r.removeEventListener("scroll", this.onScroll), this.off(s.ios || s.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", ge);
+        (t.preventClicks || t.preventClicksPropagation) && n.removeEventListener("click", this.onClick, !0), t.cssMode && r.removeEventListener("scroll", this.onScroll), this.off(s.ios || s.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", ve);
       }
     },
     breakpoints: {
@@ -11959,7 +11761,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             u && !d ? (s.removeClass(r.containerModifierClass + "multirow " + r.containerModifierClass + "multirow-column"), this.emitContainerClasses()) : !u && d && (s.addClass(r.containerModifierClass + "multirow"), "column" === c.slidesPerColumnFill && s.addClass(r.containerModifierClass + "multirow-column"), this.emitContainerClasses());
             var h = c.direction && c.direction !== r.direction,
                 f = r.loop && (c.slidesPerView !== r.slidesPerView || h);
-            h && t && this.changeDirection(), se(this.params, c), se(this, {
+            h && t && this.changeDirection(), ne(this.params, c), ne(this, {
               allowTouchMove: this.params.allowTouchMove,
               allowSlideNext: this.params.allowSlideNext,
               allowSlidePrev: this.params.allowSlidePrev
@@ -11968,7 +11770,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         }
       },
       getBreakpoint: function getBreakpoint(e) {
-        var t = B();
+        var t = F();
 
         if (e) {
           var i = !1,
@@ -12030,13 +11832,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     images: {
       loadImage: function loadImage(e, t, i, n, r, s) {
         var o,
-            a = B();
+            a = F();
 
         function l() {
           s && s();
         }
 
-        te(e).parent("picture")[0] || e.complete && r ? l() : t ? ((o = new a.Image()).onload = l, o.onerror = l, n && (o.sizes = n), i && (o.srcset = i), t && (o.src = t)) : l();
+        Z(e).parent("picture")[0] || e.complete && r ? l() : t ? ((o = new a.Image()).onload = l, o.onerror = l, n && (o.sizes = n), i && (o.srcset = i), t && (o.src = t)) : l();
       },
       preloadImages: function preloadImages() {
         var e = this;
@@ -12054,17 +11856,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
     }
   },
-      Te = {},
-      ke = function () {
+      Ce = {},
+      Ee = function () {
     function e() {
       for (var t, i, n = arguments.length, r = new Array(n), s = 0; s < n; s++) {
         r[s] = arguments[s];
       }
 
-      if (1 === r.length && r[0].constructor && r[0].constructor === Object ? i = r[0] : (t = r[0], i = r[1]), i || (i = {}), i = se({}, i), t && !i.el && (i.el = t), i.el && te(i.el).length > 1) {
+      if (1 === r.length && r[0].constructor && r[0].constructor === Object ? i = r[0] : (t = r[0], i = r[1]), i || (i = {}), i = ne({}, i), t && !i.el && (i.el = t), i.el && Z(i.el).length > 1) {
         var o = [];
-        return te(i.el).each(function (t) {
-          var n = se({}, i, {
+        return Z(i.el).each(function (t) {
+          var n = ne({}, i, {
             el: t
           });
           o.push(new e(n));
@@ -12072,9 +11874,9 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
 
       var a = this;
-      a.support = ae(), a.device = le({
+      a.support = se(), a.device = oe({
         userAgent: i.userAgent
-      }), a.browser = ce(), a.eventsListeners = {}, a.eventsAnyListeners = [], void 0 === a.modules && (a.modules = {}), Object.keys(a.modules).forEach(function (e) {
+      }), a.browser = ae(), a.eventsListeners = {}, a.eventsAnyListeners = [], void 0 === a.modules && (a.modules = {}), Object.keys(a.modules).forEach(function (e) {
         var t = a.modules[e];
 
         if (t.params) {
@@ -12091,13 +11893,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       });
       var l,
           c,
-          u = se({}, Se);
-      return a.useParams(u), a.params = se({}, u, Te, i), a.originalParams = se({}, a.params), a.passedParams = se({}, i), a.params && a.params.on && Object.keys(a.params.on).forEach(function (e) {
+          u = ne({}, we);
+      return a.useParams(u), a.params = ne({}, u, Ce, i), a.originalParams = ne({}, a.params), a.passedParams = ne({}, i), a.params && a.params.on && Object.keys(a.params.on).forEach(function (e) {
         a.on(e, a.params.on[e]);
-      }), a.params && a.params.onAny && a.onAny(a.params.onAny), a.$ = te, se(a, {
+      }), a.params && a.params.onAny && a.onAny(a.params.onAny), a.$ = Z, ne(a, {
         el: t,
         classNames: [],
-        slides: te(),
+        slides: Z(),
         slidesGrid: [],
         snapGrid: [],
         slidesSizesGrid: [],
@@ -12138,7 +11940,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           startTranslate: void 0,
           allowThresholdMove: void 0,
           formElements: "input, select, option, textarea, button, video, label",
-          lastClickTime: ne(),
+          lastClickTime: te(),
           clickTimeout: void 0,
           velocities: [],
           allowMomentumBounce: void 0,
@@ -12234,10 +12036,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }, r.mount = function (e) {
       if (this.mounted) return !0;
       var t,
-          i = te(e || this.params.el);
-      return !!(e = i[0]) && (e.swiper = this, e && e.shadowRoot && e.shadowRoot.querySelector ? (t = te(e.shadowRoot.querySelector("." + this.params.wrapperClass))).children = function (e) {
+          i = Z(e || this.params.el);
+      return !!(e = i[0]) && (e.swiper = this, e && e.shadowRoot && e.shadowRoot.querySelector ? (t = Z(e.shadowRoot.querySelector("." + this.params.wrapperClass))).children = function (e) {
         return i.children(e);
-      } : t = i.children("." + this.params.wrapperClass), se(this, {
+      } : t = i.children("." + this.params.wrapperClass), ne(this, {
         $el: i,
         el: e,
         $wrapperEl: t,
@@ -12269,10 +12071,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         } catch (e) {}
       })), n.destroyed = !0), null;
     }, e.extendDefaults = function (e) {
-      se(Te, e);
+      ne(Ce, e);
     }, e.installModule = function (t) {
       e.prototype.modules || (e.prototype.modules = {});
-      var i = t.name || Object.keys(e.prototype.modules).length + "_" + ne();
+      var i = t.name || Object.keys(e.prototype.modules).length + "_" + te();
       e.prototype.modules[i] = t;
     }, e.use = function (t) {
       return Array.isArray(t) ? (t.forEach(function (t) {
@@ -12281,25 +12083,25 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }, t = e, n = [{
       key: "extendedDefaults",
       get: function get() {
-        return Te;
+        return Ce;
       }
     }, {
       key: "defaults",
       get: function get() {
-        return Se;
+        return we;
       }
-    }], (i = null) && Ce(t.prototype, i), n && Ce(t, n), e;
+    }], (i = null) && xe(t.prototype, i), n && xe(t, n), e;
   }();
 
-  Object.keys(Ee).forEach(function (e) {
-    Object.keys(Ee[e]).forEach(function (t) {
-      ke.prototype[t] = Ee[e][t];
+  Object.keys(Se).forEach(function (e) {
+    Object.keys(Se[e]).forEach(function (t) {
+      Ee.prototype[t] = Se[e][t];
     });
-  }), ke.use([ue, fe]);
-  var Ae = ke;
+  }), Ee.use([le, de]);
+  var Te = Ee;
 
-  function _e() {
-    return (_e = Object.assign || function (e) {
+  function ke() {
+    return (ke = Object.assign || function (e) {
       for (var t = 1; t < arguments.length; t++) {
         var i = arguments[t];
 
@@ -12312,7 +12114,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }).apply(this, arguments);
   }
 
-  var Le = {
+  var Ae = {
     update: function update() {
       var e = this.params.navigation;
 
@@ -12333,7 +12135,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var e,
           t,
           i = this.params.navigation;
-      (i.nextEl || i.prevEl) && (i.nextEl && (e = te(i.nextEl), this.params.uniqueNavElements && "string" == typeof i.nextEl && e.length > 1 && 1 === this.$el.find(i.nextEl).length && (e = this.$el.find(i.nextEl))), i.prevEl && (t = te(i.prevEl), this.params.uniqueNavElements && "string" == typeof i.prevEl && t.length > 1 && 1 === this.$el.find(i.prevEl).length && (t = this.$el.find(i.prevEl))), e && e.length > 0 && e.on("click", this.navigation.onNextClick), t && t.length > 0 && t.on("click", this.navigation.onPrevClick), se(this.navigation, {
+      (i.nextEl || i.prevEl) && (i.nextEl && (e = Z(i.nextEl), this.params.uniqueNavElements && "string" == typeof i.nextEl && e.length > 1 && 1 === this.$el.find(i.nextEl).length && (e = this.$el.find(i.nextEl))), i.prevEl && (t = Z(i.prevEl), this.params.uniqueNavElements && "string" == typeof i.prevEl && t.length > 1 && 1 === this.$el.find(i.prevEl).length && (t = this.$el.find(i.prevEl))), e && e.length > 0 && e.on("click", this.navigation.onNextClick), t && t.length > 0 && t.on("click", this.navigation.onPrevClick), ne(this.navigation, {
         $nextEl: e,
         nextEl: e && e[0],
         $prevEl: t,
@@ -12347,7 +12149,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       t && t.length && (t.off("click", this.navigation.onNextClick), t.removeClass(this.params.navigation.disabledClass)), i && i.length && (i.off("click", this.navigation.onPrevClick), i.removeClass(this.params.navigation.disabledClass));
     }
   },
-      Me = {
+      _e = {
     name: "navigation",
     params: {
       navigation: {
@@ -12360,8 +12162,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
     },
     create: function create() {
-      oe(this, {
-        navigation: _e({}, Le)
+      re(this, {
+        navigation: ke({}, Ae)
       });
     },
     on: {
@@ -12382,13 +12184,13 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
             n = e.navigation,
             r = n.$nextEl,
             s = n.$prevEl;
-        !e.params.navigation.hideOnClick || te(t.target).is(s) || te(t.target).is(r) || (r ? i = r.hasClass(e.params.navigation.hiddenClass) : s && (i = s.hasClass(e.params.navigation.hiddenClass)), !0 === i ? e.emit("navigationShow") : e.emit("navigationHide"), r && r.toggleClass(e.params.navigation.hiddenClass), s && s.toggleClass(e.params.navigation.hiddenClass));
+        !e.params.navigation.hideOnClick || Z(t.target).is(s) || Z(t.target).is(r) || (r ? i = r.hasClass(e.params.navigation.hiddenClass) : s && (i = s.hasClass(e.params.navigation.hiddenClass)), !0 === i ? e.emit("navigationShow") : e.emit("navigationHide"), r && r.toggleClass(e.params.navigation.hiddenClass), s && s.toggleClass(e.params.navigation.hiddenClass));
       }
     }
   };
 
-  function Oe() {
-    return (Oe = Object.assign || function (e) {
+  function Le() {
+    return (Le = Object.assign || function (e) {
       for (var t = 1; t < arguments.length; t++) {
         var i = arguments[t];
 
@@ -12401,7 +12203,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }).apply(this, arguments);
   }
 
-  var Ie = {
+  var Me = {
     update: function update() {
       var e = this.rtl,
           t = this.params.pagination;
@@ -12418,7 +12220,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
               l,
               c = this.pagination.bullets;
           if (t.dynamicBullets && (this.pagination.bulletSize = c.eq(0)[this.isHorizontal() ? "outerWidth" : "outerHeight"](!0), r.css(this.isHorizontal() ? "width" : "height", this.pagination.bulletSize * (t.dynamicMainBullets + 4) + "px"), t.dynamicMainBullets > 1 && void 0 !== this.previousIndex && (this.pagination.dynamicBulletIndex += i - this.previousIndex, this.pagination.dynamicBulletIndex > t.dynamicMainBullets - 1 ? this.pagination.dynamicBulletIndex = t.dynamicMainBullets - 1 : this.pagination.dynamicBulletIndex < 0 && (this.pagination.dynamicBulletIndex = 0)), o = i - this.pagination.dynamicBulletIndex, l = ((a = o + (Math.min(c.length, t.dynamicMainBullets) - 1)) + o) / 2), c.removeClass(t.bulletActiveClass + " " + t.bulletActiveClass + "-next " + t.bulletActiveClass + "-next-next " + t.bulletActiveClass + "-prev " + t.bulletActiveClass + "-prev-prev " + t.bulletActiveClass + "-main"), r.length > 1) c.each(function (e) {
-            var n = te(e),
+            var n = Z(e),
                 r = n.index();
             r === i && n.addClass(t.bulletActiveClass), t.dynamicBullets && (r >= o && r <= a && n.addClass(t.bulletActiveClass + "-main"), r === o && n.prev().addClass(t.bulletActiveClass + "-prev").prev().addClass(t.bulletActiveClass + "-prev-prev"), r === a && n.next().addClass(t.bulletActiveClass + "-next").next().addClass(t.bulletActiveClass + "-next-next"));
           });else {
@@ -12489,12 +12291,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
           t = e.params.pagination;
 
       if (t.el) {
-        var i = te(t.el);
+        var i = Z(t.el);
         0 !== i.length && (e.params.uniqueNavElements && "string" == typeof t.el && i.length > 1 && (i = e.$el.find(t.el)), "bullets" === t.type && t.clickable && i.addClass(t.clickableClass), i.addClass(t.modifierClass + t.type), "bullets" === t.type && t.dynamicBullets && (i.addClass("" + t.modifierClass + t.type + "-dynamic"), e.pagination.dynamicBulletIndex = 0, t.dynamicMainBullets < 1 && (t.dynamicMainBullets = 1)), "progressbar" === t.type && t.progressbarOpposite && i.addClass(t.progressbarOppositeClass), t.clickable && i.on("click", "." + t.bulletClass.replace(/ /g, "."), function (t) {
           t.preventDefault();
-          var i = te(this).index() * e.params.slidesPerGroup;
+          var i = Z(this).index() * e.params.slidesPerGroup;
           e.params.loop && (i += e.loopedSlides), e.slideTo(i);
-        }), se(e.pagination, {
+        }), ne(e.pagination, {
           $el: i,
           el: i[0]
         }));
@@ -12509,7 +12311,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
     }
   },
-      Pe = {
+      Oe = {
     name: "pagination",
     params: {
       pagination: {
@@ -12544,10 +12346,10 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       }
     },
     create: function create() {
-      oe(this, {
-        pagination: Oe({
+      re(this, {
+        pagination: Le({
           dynamicBulletIndex: 0
-        }, Ie)
+        }, Me)
       });
     },
     on: {
@@ -12570,20 +12372,20 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         e.pagination.destroy();
       },
       click: function click(e, t) {
-        e.params.pagination.el && e.params.pagination.hideOnClick && e.pagination.$el.length > 0 && !te(t.target).hasClass(e.params.pagination.bulletClass) && (!0 === e.pagination.$el.hasClass(e.params.pagination.hiddenClass) ? e.emit("paginationShow") : e.emit("paginationHide"), e.pagination.$el.toggleClass(e.params.pagination.hiddenClass));
+        e.params.pagination.el && e.params.pagination.hideOnClick && e.pagination.$el.length > 0 && !Z(t.target).hasClass(e.params.pagination.bulletClass) && (!0 === e.pagination.$el.hasClass(e.params.pagination.hiddenClass) ? e.emit("paginationShow") : e.emit("paginationHide"), e.pagination.$el.toggleClass(e.params.pagination.hiddenClass));
       }
     }
   },
+      Ie = i(9),
+      Pe = i.n(Ie),
       De = i(10),
       Ne = i.n(De),
       je = i(11),
       Fe = i.n(je),
-      Re = i(12),
+      Re = i(2),
       Be = i.n(Re),
-      He = i(2),
+      He = i(12),
       qe = i.n(He),
-      ze = i(13),
-      Ge = i.n(ze),
-      We = i(0);
-  window.svg4everybody = r.a, window.picturefill = o.a, window.objectFitImages = C, window.viewportUnitsBuggyfill = l.a, Ae.use([Me, Pe]), window.Swiper = Ae, window.MicroModal = P, window.validate = Ne.a, window.mask = Fe.a, window.Choices = Be.a, window.debounce = qe.a, window.throttle = Ge.a, window.disablePageScroll = We.disablePageScroll, window.enablePageScroll = We.enablePageScroll, window.clearQueueScrollLocks = We.clearQueueScrollLocks;
+      ze = i(0);
+  window.svg4everybody = r.a, window.picturefill = o.a, window.objectFitImages = x, Te.use([_e, Oe]), window.Swiper = Te, window.MicroModal = O, window.validate = Pe.a, window.mask = Ne.a, window.Choices = Fe.a, window.debounce = Be.a, window.throttle = qe.a, window.disablePageScroll = ze.disablePageScroll, window.enablePageScroll = ze.enablePageScroll, window.clearQueueScrollLocks = ze.clearQueueScrollLocks;
 }]);
