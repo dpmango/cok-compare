@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol id="ico-mono-arrow-long" viewBox="0 0 26 16">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.343.929l6.364 6.364a1 1 0 010 1.414l-6.364 6.364a1 1 0 01-1.414-1.414L22.586 9H1a1 1 0 010-2h21.586l-4.657-4.657A1 1 0 0119.343.93z"/>
+</symbol><symbol id="ico-mono-arrow-nav-left" viewBox="0 0 10 18">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.707.293a1 1 0 00-1.414 0l-8 8a1 1 0 000 1.414l8 8a1 1 0 001.414-1.414L2.414 9l7.293-7.293a1 1 0 000-1.414z"/>
+</symbol><symbol id="ico-mono-arrow-nav-right" viewBox="0 0 10 18">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M.293.293a1 1 0 011.414 0l8 8a1 1 0 010 1.414l-8 8a1 1 0 01-1.414-1.414L7.586 9 .293 1.707a1 1 0 010-1.414z"/>
+</symbol><symbol id="ico-mono-arrow" viewBox="0 0 20 16">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.343.929l6.364 6.364a1 1 0 010 1.414l-6.364 6.364a1 1 0 01-1.414-1.414L16.586 9H1a1 1 0 010-2h15.586l-4.657-4.657A1 1 0 0113.343.93z"/>
+</symbol><symbol id="ico-mono-caret" viewBox="0 0 9 6">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M.293.293a1 1 0 011.414 0L4.5 3.086 7.293.293a1 1 0 011.414 1.414l-3.5 3.5a1 1 0 01-1.414 0l-3.5-3.5a1 1 0 010-1.414z"/>
+</symbol><symbol id="ico-mono-cart" viewBox="0 0 24 23">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M7 21a2 2 0 114 0 2 2 0 01-4 0z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M18 21a2 2 0 114 0 2 2 0 01-4 0z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 1a1 1 0 011-1h4a1 1 0 01.98.804L6.82 5H23a1 1 0 01.982 1.187l-1.601 8.398A3 3 0 0119.39 17H9.69a3 3 0 01-2.99-2.414L5.03 6.239a.994.994 0 01-.017-.084L4.18 2H1a1 1 0 01-1-1zm7.22 6l1.44 7.195a1 1 0 001 .805h9.76a1 1 0 00.998-.802L21.792 7H7.221z"/>
+</symbol><symbol id="ico-mono-close" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M.47.47a.75.75 0 011.06 0L10 8.94 18.47.47a.75.75 0 111.06 1.06L11.06 10l8.47 8.47a.75.75 0 11-1.06 1.06L10 11.06l-8.47 8.47a.75.75 0 01-1.06-1.06L8.94 10 .47 1.53a.75.75 0 010-1.06z"/>
+</symbol><symbol id="ico-mono-eng-flag" viewBox="0 0 28 19">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 1a1 1 0 011-1h26a1 1 0 011 1v17a1 1 0 01-1 1H1a1 1 0 01-1-1V1zm4.498 1l6.78 4.223a1 1 0 01-1.057 1.697L2 2.8v5.7h11V2H4.498zM15 2v6.5h11V2.8l-8.221 5.12a1 1 0 01-1.058-1.697L23.502 2H15zm11 8.5H15V17h8.22l-6.515-4.233a1 1 0 011.09-1.677L26 16.422V10.5zM13 17v-6.5H2v5.7l8.221-5.12a1 1 0 011.058 1.697L4.498 17H13z"/>
+</symbol><symbol id="ico-mono-eye" viewBox="0 0 24 18">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.853 9a18.925 18.925 0 002.57 3.487C6.233 14.42 8.8 16.25 12 16.25s5.766-1.83 7.578-3.763A18.926 18.926 0 0022.148 9a18.926 18.926 0 00-2.57-3.487C17.766 3.58 15.2 1.75 12 1.75S6.234 3.58 4.422 5.513A18.926 18.926 0 001.852 9zM23 9l.67-.336V8.66l-.004-.006-.01-.02a7.466 7.466 0 00-.188-.346 20.43 20.43 0 00-2.796-3.802C18.734 2.42 15.8.25 12 .25c-3.8 0-6.734 2.17-8.672 4.237A20.424 20.424 0 00.532 8.289a12.102 12.102 0 00-.187.345l-.011.021-.003.006-.001.002v.001L1 9l-.67-.335a.75.75 0 000 .67L1 9l-.67.336v.003l.004.006.01.02.04.076a18.263 18.263 0 00.72 1.216 20.426 20.426 0 002.224 2.856C5.266 15.58 8.2 17.75 12 17.75c3.8 0 6.734-2.17 8.672-4.237a20.43 20.43 0 002.796-3.802 12.155 12.155 0 00.187-.345l.011-.021.003-.006.001-.002v-.001L23 9zm0 0l.67.335a.75.75 0 000-.67L23 9z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 6.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM8.25 9a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0z"/>
+</symbol><symbol id="ico-mono-phone" viewBox="0 0 22 22">
+    <path d="M21 15.92v3a1.998 1.998 0 01-2.18 2 19.791 19.791 0 01-8.63-3.07 19.502 19.502 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 013.11 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0121 15.92z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol><symbol id="ico-mono-search" viewBox="0 0 20 20">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M9 2a7 7 0 100 14A7 7 0 009 2zM0 9a9 9 0 1118 0A9 9 0 010 9z"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M13.943 13.943a1 1 0 011.414 0l4.35 4.35a1 1 0 01-1.414 1.414l-4.35-4.35a1 1 0 010-1.414z"/>
+</symbol><symbol id="ico-mono-select-caret" viewBox="0 0 8 19">
+    <path d="M2.911.378a1 1 0 011.567 0L7.17 3.77a1 1 0 01-.783 1.622H1.002A1 1 0 01.219 3.77L2.91.378z"/>
+    <path d="M2.911 18.013a1 1 0 001.567 0l2.692-3.391A1 1 0 006.387 13H1.002a1 1 0 00-.783 1.622l2.692 3.391z"/>
+</symbol></svg>

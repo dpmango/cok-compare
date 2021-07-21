@@ -1,0 +1,15 @@
+ProjectTitle: СУЗ
+
+PageList:
+  - file: homepage.html
+    ready: 90
+  - file: text.html
+    ready: 100
+  - file: project.html
+    ready: 90
+  - file: projects.html
+    ready: 90
+  - file: program.html
+    ready: 90
+  - file: ui.html
+    ready: 50
